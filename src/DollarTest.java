@@ -10,23 +10,32 @@ import static org.junit.Assert.assertThat;
  */
 public class DollarTest {
     @Test
-    public void testMultiplicationFiveTimesTwo() {
-        Dollar five = new Dollar(5);
-        Dollar ten = five.times(2);
-        assertEquals(10, ten.amount);
+    public void testDollarMultiplication() {
+        Money five = Money.dollar(5);
+        assertEquals(Money.dollar(10), five.times(2));
+        assertEquals(Money.dollar(15), five.times(3));
+
+        Dollar ten = Money.dollar(10);
+        assertEquals(Money.dollar(30), ten.times(3));
     }
 
     @Test
-    public void testMultiplicationTenTimesThree() {
-        Dollar ten = new Dollar(10);
-        Dollar thirty = ten.times(3);
-        assertEquals(30, thirty.amount);
+    public void testFrancMultiplication() {
+        Money five = Money.franc(5);
+        assertEquals(Money.franc(10), five.times(2));
+        assertEquals(Money.franc(15), five.times(3));
+
+        Money ten = Money.franc(10);
+        assertEquals(Money.franc(30), ten.times(3));
     }
 
     @Test
     public void testEquality() {
-        assertThat(new Dollar(5), is(new Dollar(5)));
-        assertThat(new Dollar(5), is(not(new Dollar(6))));
+        assertThat(Money.dollar(5), is(Money.dollar(5)));
+        assertThat(Money.dollar(5), is(not(Money.dollar(6))));
+        assertThat(new Franc(5), is(new Franc(5)));
+        assertThat(new Franc(5), is(not(new Franc(6))));
+        assertThat(Money.dollar(5), is(not(new Franc(5))));
     }
 
 
