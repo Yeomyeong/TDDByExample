@@ -1,9 +1,6 @@
 import org.junit.Test;
 
-import static org.hamcrest.CoreMatchers.not;
-import static org.hamcrest.core.Is.is;
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertThat;
+import static org.junit.Assert.*;
 
 /**
  * Created by aymonwoo on 2016. 4. 19..
@@ -31,12 +28,14 @@ public class DollarTest {
 
     @Test
     public void testEquality() {
-        assertThat(Money.dollar(5), is(Money.dollar(5)));
-        assertThat(Money.dollar(5), is(not(Money.dollar(6))));
-        assertThat(new Franc(5), is(new Franc(5)));
-        assertThat(new Franc(5), is(not(new Franc(6))));
-        assertThat(Money.dollar(5), is(not(new Franc(5))));
+        assertTrue(Money.dollar(5).equals(Money.dollar(5)));
+        assertFalse(Money.dollar(5).equals(Money.dollar(6)));
+        assertTrue(Money.franc(5).equals(Money.franc(5)));
+        assertFalse(Money.franc(5).equals(Money.franc(6)));
+        assertFalse(Money.dollar(5).equals(Money.franc(5)));
     }
+
+
 
 
 }
