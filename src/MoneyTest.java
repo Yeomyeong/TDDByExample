@@ -4,12 +4,11 @@ import static org.hamcrest.CoreMatchers.not;
 import static org.hamcrest.core.Is.is;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertThat;
-import static org.junit.Assert.assertTrue;
 
 /**
  * Created by aymonwoo on 2016. 4. 19..
  */
-public class DollarTest {
+public class MoneyTest {
     @Test
     public void testMultiplication() {
         Money five = Money.dollar(5);
