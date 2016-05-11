@@ -1,22 +1,40 @@
 /**
  * Created by wymstar on 4/27/16.
  */
-public abstract class Money {
+public class Money {
   protected int amount;
+  protected String currency;
 
+  public Money(int amount, String currency) {
+    this.amount = amount;
+    this.currency = currency;
+  }
+
+  static Money dollar(int amount) {
+    return new Money(amount, "USD");
+  }
+
+  public static Money franc(int amount) {
+    return new Money(amount, "CHF");
+  }
+
+  Money times(int multiplier) {
+    return new Money(amount * multiplier, currency);
+  }
+
+  String currency() {
+    return currency;
+  }
+
+  @Override
   public boolean equals(Object object) {
     Money money = (Money) object;
     return this.amount == money.amount
-            && this.getClass().equals(money.getClass());
+            && this.currency.equals(money.currency());
   }
 
-  static Dollar dollar(int amount) {
-    return new Dollar(amount);
-  }
-
-  abstract Money times(int multiplier) ;
-
-  public static Franc franc(int amount) {
-    return new Franc(amount);
+  @Override
+  public String toString() {
+    return amount + " " + currency;
   }
 }
