@@ -30,6 +30,10 @@ public class Money implements Expression {
     return this;
   }
 
+  public Expression plus(Money addend) {
+    return new Sum(this, addend);
+  }
+
   @Override
   public boolean equals(Object object) {
     Money money = (Money) object;
@@ -42,7 +46,4 @@ public class Money implements Expression {
     return amount + " " + currency;
   }
 
-  public Expression plus(Money addend) {
-    return new Sum(this, addend);
-  }
 }
